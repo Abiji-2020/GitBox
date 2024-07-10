@@ -1,0 +1,10 @@
+.main{
+    background-color: #5120c4;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 64px;
+}
