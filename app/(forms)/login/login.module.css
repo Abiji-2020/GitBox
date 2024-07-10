@@ -9,4 +9,17 @@
     justify-content: center;
     max-width: 100%;
     height: 100vh;
+    padding: 200px 360px;
+}
+.container{
+    background-color: aliceblue;
+    width: 100%;
+    height: fit-content;
+    border: solid 1px #5120c4;
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 24px;
 }
