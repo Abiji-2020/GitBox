@@ -1,19 +1,7 @@
-.background{
-    background-image: url("/siginup.png");
-    width: fit-content;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    max-width: 100%;
-    height: 100vh;
-    padding: 200px 360px;
-}
+
 .container{
-    background-color: aliceblue;
-    width: 100%;
+    background-color: #f5f5f5;
+    width: fit-content;
     height: fit-content;
     border: solid 1px #5120c4;
     border-radius: 10px;
@@ -22,4 +10,52 @@
     justify-content: center;
     flex-direction: column;
     padding: 24px;
+    position: relative;
+    top: 28vh;
+    left: 43vw;
+}
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 12px;
+    align-items: center;
+    justify-content: center;
+    
+}
+.heading{
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+}
+.form{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    
+}
+.input{
+    width: 100%;
+    height: 20px;
+    border: solid 1px #5120c4;
+    border-radius: 5px;
+    margin-bottom: 12px;
+    padding: 5px 3px;
+    outline: none;
+    background-color: wheat;
+
+}
+
+.button{
+    background-color: turquoise;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 3px;
+    cursor: pointer;
+    width: 100%;
+    height: 30px;
+    font-family: 'Roboto', sans-serif;
 }

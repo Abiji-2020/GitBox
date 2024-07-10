@@ -1,15 +1,13 @@
-import styles from "./login.module.css"
-
-
+import styles from "./layout.module.css"
 export default function Layout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body className={styles.background}>{children}</body>
-        </html>
+        
+            <section className={styles.background}>{children}</section>
+        
     );
 }
 
