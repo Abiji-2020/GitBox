@@ -82,6 +82,17 @@
   margin-top: 15px;
   margin-left: 10px;
 }
+.noaccount a {
+  color: #0c1421;
+  text-decoration: none;
 
+}
 
+.error{
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  color: red;
+  margin-top: 15px;
+  margin-left: 12px;
+}
 

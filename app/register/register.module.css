@@ -1,0 +1,99 @@
+.main {
+    background-color: #fff;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+  }
+  .left {
+    display: flex;
+    width: 50%;
+    padding: 32px;
+    flex-direction: column;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 27%;
+  }
+  .intro {
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+  }
+  .heading {
+    font-size: 32px;
+    font-weight: 800;
+    font-family: "SF Pro Rounded";
+    color: #0c1421;
+    margin-bottom: 2px;
+  }
+  .paragraph {
+    font-size: 16px;
+    color: #313957;
+    font-family: "SF Pro Display";
+  }
+  .inputForm {
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+  }
+  .label {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    color: #0c1421;
+    margin-top: 10px;
+    margin-bottom: 1px;
+  }
+  .inputGroupt {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2px;
+  }
+  .input {
+    width: 92%;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid;
+    border-color: #f7fbff;
+    background-color: #d4d7e3;
+    color: #8897ad;
+    outline-color: #535c7c;
+    padding: 0 13px;
+  }
+  .buttonGroup {
+    margin-top: 25px;
+    width: 100%;
+  }
+  .button {
+    width: 100%;
+    height: 40px;
+    border: 1px solid;
+    border-radius: 12px;
+    padding: 0 13px;
+    background-color: #0c1421;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .noaccount{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-left: 10px;
+  }
+  .noaccount a {
+    color: #0c1421;
+    text-decoration: none;
+  
+  }
+  
+  .error{
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: red;
+    margin-top: 15px;
+    margin-left: 12px;
+  }
+  
+  

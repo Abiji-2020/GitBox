@@ -1,26 +1,27 @@
 "use client";
 import React, { useState } from "react";
-import styles from "./login.module.css";
+import styles from "./register.module.css";
 import Image from "next/image";
-import axios from "axios";
+import { useRouter } from "next/navigation";
 
-export default function Login() {
+export default function Register() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const login = async () => {
-    const response = await axios({
-      url: "http://localhost:3000/api/login",
-      method: "post",
+  const [username, setUsername] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+  const router = useRouter();
+  const register = async () => {
+    
+    const response = await fetch("/api/user", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      data: JSON.stringify({ email: email, password: password }),
+      body: JSON.stringify({ email, username, password }),
     });
-    if(response.status === 404){
-      console.log("User does not exist");
+    if (response.status === 201) {
+      router.push("/login");
     }
-    const data = await response.data;
-    console.log(data);
   };
   
   const handleEmailChange = (e: any) => {
@@ -30,6 +31,17 @@ export default function Login() {
   const handlePasswordChange = (e: any) => {
     setPassword(e.target.value);
   };
+  const handleUsernameChange = (e: any) => {
+    setUsername(e.target.value);
+  };
+  const handleConfirmPasswordChange = (e: any) => {
+    setConfirmPassword(e.target.value);
+  };
+  const checkPassword = (password: string | undefined, confirmPassword: string | undefined) => {
+    if(password === undefined || confirmPassword === undefined) return false;
+    return password === confirmPassword;
+  }
+
   const isValidEmail = (email: any) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return regex.test(email);
@@ -45,15 +57,17 @@ export default function Login() {
   const emailSpan = (
     <span className={styles.error}>*incorrect email format </span>
   );
+  const confirmPasswordSpan = (
+    <span className={styles.error}>*passwords do not match</span>
+  );
   return (
     <main className={styles.main}>
       <div className={styles.left}>
         <div className={styles.form}>
           <div className={styles.intro}>
-            <h1 className={styles.heading}>Welcome Back 👋</h1>
+            <h1 className={styles.heading}>Hello  👋</h1>
             <p className={styles.paragraph}>
-              Today is a new day. Check your project and colab with your team on
-              GitBox.
+              Let's get started with GitBox. A team collaboration tool for the software development process.
             </p>
           </div>
           <div className={styles.inputForm}>
@@ -69,6 +83,16 @@ export default function Login() {
               {isValidEmail(email) || email === ""  || email==undefined? null : emailSpan}
             </div>
             <div className={styles.inputGroup}>
+              <p className={styles.label}>Username</p>
+              <input
+                type="text"
+                onChange={handleUsernameChange}
+                value={username}
+                className={styles.input}
+                placeholder="Username"
+              />
+              </div>
+            <div className={styles.inputGroup}>
               <p className={styles.label}>Password</p>
               <input
                 type="password"
@@ -79,17 +103,27 @@ export default function Login() {
               />
               {isValidPassword(password) || password === "" ||password==undefined ? null : passwordSpan}
             </div>
+            <div className={styles.inputGroup}>
+              <p className={styles.label}>Confirm Password</p>
+              <input
+                type="password"
+                onChange={handleConfirmPasswordChange}
+                value={confirmPassword}
+                className={styles.input}
+                placeholder="Confirm Password"/>
+                {checkPassword(password, confirmPassword) || confirmPassword === "" || confirmPassword==undefined ? null : confirmPasswordSpan}
+                </div>
             <div className={styles.buttonGroup}>
-              <button className={styles.button} onClick={login}>Sign In</button>
+              <button className={styles.button} onClick={register}>Sign In</button>
             </div>
           </div>
           <div className={styles.noaccount}>
             {" "}
-            Dont't have an account? <a href="/register">Sign up</a>
+            Already have an Account? <a href="/login">Sign in</a>
           </div>
         </div>
       </div>
-      <div style={{ paddingTop: 18 }}>
+      <div style={{ paddingTop: 16 }}>
         <Image src="/Signup.png" width={600} height={600} alt="Image" />
       </div>
     </main>
