@@ -18,4 +18,9 @@ async function getCookies() {
     return { token, email };
 }
 
-export { createCookies, getCookies };
+async function removeCookies() {
+    cookies().delete("token");
+    cookies().delete("email");
+}
+
+export { createCookies, getCookies , removeCookies};

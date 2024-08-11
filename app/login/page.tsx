@@ -48,13 +48,13 @@ export default function Login() {
     if (response.status === 200) {
       const data = await response.data;
       console.log(data);
-      createCookies(data);
+      const value = {
+        token: data.token,
+        email: data.email,
+      };
+      createCookies(value);
       router.push("/");
     }
-    
-    const data = await response.data;
-    console.log(data);
-    router.push("/");
     
   };
   
