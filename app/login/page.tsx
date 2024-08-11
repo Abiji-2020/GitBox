@@ -3,24 +3,59 @@ import React, { useState } from "react";
 import styles from "./login.module.css";
 import Image from "next/image";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import { createCookies} from "../cookies/storeCookies";
 
 export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [errormessage, setErrorMessage] = useState("");
+  const [error, setError] = useState(false);
+
+  const router = useRouter();
+
   const login = async () => {
     const response = await axios({
-      url: "http://localhost:3000/api/login",
+      url: "http://localhost:8080/login",
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       data: JSON.stringify({ email: email, password: password }),
+    }).catch((err) => {
+      console.log(err);
+      if(err.response.status === 404){
+        console.log("User does not exist");
+        setErrorMessage("User does not exist");
+        setError(true);
+      }
+
+      if(err.response.status === 401){
+        console.log("Incorrect password");
+        setErrorMessage("Incorrect password");
+        setError(true);
+      }
+      if(err.response.status === 409){
+        console.log("User already exists");
+        setErrorMessage("User already exists");
+        setError(true);
+      }
+      return err
+
     });
-    if(response.status === 404){
-      console.log("User does not exist");
+    if(response === undefined) return;
+    console.log(response);
+    if (response.status === 200) {
+      const data = await response.data;
+      console.log(data);
+      createCookies(data);
+      router.push("/");
     }
+    
     const data = await response.data;
     console.log(data);
+    router.push("/");
+    
   };
   
   const handleEmailChange = (e: any) => {
@@ -55,6 +90,9 @@ export default function Login() {
               Today is a new day. Check your project and colab with your team on
               GitBox.
             </p>
+          </div>
+          <div className={styles.error}>
+          {error? errormessage : null}
           </div>
           <div className={styles.inputForm}>
             <div className={styles.inputGroup}>
