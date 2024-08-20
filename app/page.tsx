@@ -1,11 +1,13 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import styles from "./style.module.css";
 import { getCookies, removeCookies } from "./cookies/storeCookies";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import Loading from "./components/Loading";
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -14,6 +16,8 @@ export default function Home() {
       console.log("Cookies:", cookies);
       if (!cookies?.email) {
         router.push("/login");
+      } else {
+        setIsLoading(false); // Cookies are valid, hide loading screen
       }
     };
 
@@ -26,6 +30,10 @@ export default function Home() {
     console.log("After logout, cookies:", cookies);
     router.push("/login"); // Redirect to login after logging out
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div>
