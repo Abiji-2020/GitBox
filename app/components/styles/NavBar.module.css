@@ -33,10 +33,10 @@
     justify-content: space-between;
     align-items: right;
     width: 10rem;
-    padding-left: 83vw;
+    padding-left: 75vw;
 }
 .icon{
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: black;
     cursor: pointer;
     size: 2rem;

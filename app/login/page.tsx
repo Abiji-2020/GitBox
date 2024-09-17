@@ -4,7 +4,7 @@ import styles from "./login.module.css";
 import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { createCookies} from "../cookies/storeCookies";
+import { createCookies } from "../cookies/storeCookies";
 
 export default function Login() {
   const [email, setEmail] = useState();
@@ -24,26 +24,25 @@ export default function Login() {
       data: JSON.stringify({ email: email, password: password }),
     }).catch((err) => {
       console.log(err);
-      if(err.response.status === 404){
+      if (err.response.status === 404) {
         console.log("User does not exist");
         setErrorMessage("User does not exist");
         setError(true);
       }
 
-      if(err.response.status === 401){
+      if (err.response.status === 401) {
         console.log("Incorrect password");
         setErrorMessage("Incorrect password");
         setError(true);
       }
-      if(err.response.status === 409){
+      if (err.response.status === 409) {
         console.log("User already exists");
         setErrorMessage("User already exists");
         setError(true);
       }
-      return err
-
+      return err;
     });
-    if(response === undefined) return;
+    if (response === undefined) return;
     console.log(response);
     if (response.status === 200) {
       const data = await response.data;
@@ -55,9 +54,8 @@ export default function Login() {
       createCookies(value);
       router.push("/");
     }
-    
   };
-  
+
   const handleEmailChange = (e: any) => {
     setEmail(e.target.value);
     console.log(email);
@@ -70,7 +68,7 @@ export default function Login() {
     return regex.test(email);
   };
   const isValidPassword = (password: string | undefined) => {
-    if(password === undefined) return false;
+    if (password === undefined) return false;
     return password.length >= 8;
   };
   const passwordSpan = (
@@ -91,9 +89,7 @@ export default function Login() {
               GitBox.
             </p>
           </div>
-          <div className={styles.error}>
-          {error? errormessage : null}
-          </div>
+          <div className={styles.error}>{error ? errormessage : null}</div>
           <div className={styles.inputForm}>
             <div className={styles.inputGroup}>
               <p className={styles.label}>Email</p>
@@ -104,7 +100,9 @@ export default function Login() {
                 className={styles.input}
                 placeholder="Example@email.com"
               />
-              {isValidEmail(email) || email === ""  || email==undefined? null : emailSpan}
+              {isValidEmail(email) || email === "" || email == undefined
+                ? null
+                : emailSpan}
             </div>
             <div className={styles.inputGroup}>
               <p className={styles.label}>Password</p>
@@ -115,10 +113,16 @@ export default function Login() {
                 className={styles.input}
                 placeholder="Atleast 8 characters"
               />
-              {isValidPassword(password) || password === "" ||password==undefined ? null : passwordSpan}
+              {isValidPassword(password) ||
+              password === "" ||
+              password == undefined
+                ? null
+                : passwordSpan}
             </div>
             <div className={styles.buttonGroup}>
-              <button className={styles.button} onClick={login}>Sign In</button>
+              <button className={styles.button} onClick={login}>
+                Sign In
+              </button>
             </div>
           </div>
           <div className={styles.noaccount}>

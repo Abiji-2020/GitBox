@@ -11,7 +11,6 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState();
   const router = useRouter();
   const register = async () => {
-    
     const response = await fetch("http://localhost:8080/register", {
       method: "POST",
       headers: {
@@ -26,7 +25,7 @@ export default function Register() {
       router.push("/");
     }
   };
-  
+
   const handleEmailChange = (e: any) => {
     setEmail(e.target.value);
     console.log(email);
@@ -40,17 +39,20 @@ export default function Register() {
   const handleConfirmPasswordChange = (e: any) => {
     setConfirmPassword(e.target.value);
   };
-  const checkPassword = (password: string | undefined, confirmPassword: string | undefined) => {
-    if(password === undefined || confirmPassword === undefined) return false;
+  const checkPassword = (
+    password: string | undefined,
+    confirmPassword: string | undefined
+  ) => {
+    if (password === undefined || confirmPassword === undefined) return false;
     return password === confirmPassword;
-  }
+  };
 
   const isValidEmail = (email: any) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return regex.test(email);
   };
   const isValidPassword = (password: string | undefined) => {
-    if(password === undefined) return false;
+    if (password === undefined) return false;
     return password.length >= 8;
   };
   const passwordSpan = (
@@ -68,9 +70,10 @@ export default function Register() {
       <div className={styles.left}>
         <div className={styles.form}>
           <div className={styles.intro}>
-            <h1 className={styles.heading}>Hello  👋</h1>
+            <h1 className={styles.heading}>Hello 👋</h1>
             <p className={styles.paragraph}>
-              Let's get started with GitBox. A team collaboration tool for the software development process.
+              Let's get started with GitBox. A team collaboration tool for the
+              software development process.
             </p>
           </div>
           <div className={styles.inputForm}>
@@ -83,7 +86,9 @@ export default function Register() {
                 className={styles.input}
                 placeholder="Example@email.com"
               />
-              {isValidEmail(email) || email === ""  || email==undefined? null : emailSpan}
+              {isValidEmail(email) || email === "" || email == undefined
+                ? null
+                : emailSpan}
             </div>
             <div className={styles.inputGroup}>
               <p className={styles.label}>Username</p>
@@ -94,7 +99,7 @@ export default function Register() {
                 className={styles.input}
                 placeholder="Username"
               />
-              </div>
+            </div>
             <div className={styles.inputGroup}>
               <p className={styles.label}>Password</p>
               <input
@@ -104,7 +109,11 @@ export default function Register() {
                 className={styles.input}
                 placeholder="Atleast 8 characters"
               />
-              {isValidPassword(password) || password === "" ||password==undefined ? null : passwordSpan}
+              {isValidPassword(password) ||
+              password === "" ||
+              password == undefined
+                ? null
+                : passwordSpan}
             </div>
             <div className={styles.inputGroup}>
               <p className={styles.label}>Confirm Password</p>
@@ -113,11 +122,18 @@ export default function Register() {
                 onChange={handleConfirmPasswordChange}
                 value={confirmPassword}
                 className={styles.input}
-                placeholder="Confirm Password"/>
-                {checkPassword(password, confirmPassword) || confirmPassword === "" || confirmPassword==undefined ? null : confirmPasswordSpan}
-                </div>
+                placeholder="Confirm Password"
+              />
+              {checkPassword(password, confirmPassword) ||
+              confirmPassword === "" ||
+              confirmPassword == undefined
+                ? null
+                : confirmPasswordSpan}
+            </div>
             <div className={styles.buttonGroup}>
-              <button className={styles.button} onClick={register}>Sign In</button>
+              <button className={styles.button} onClick={register}>
+                Sign In
+              </button>
             </div>
           </div>
           <div className={styles.noaccount}>

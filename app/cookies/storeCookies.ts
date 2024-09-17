@@ -1,26 +1,25 @@
 "use server";
 
-import { cookies } from "next/headers"; 
-
+import { cookies } from "next/headers";
 
 async function createCookies(data: any) {
-    const token = data.token;
-    const email = data.email;
+  const token = data.token;
+  const email = data.email;
 
-    cookies().set("token", token);
-    cookies().set("email", email);
+  cookies().set("token", token);
+  cookies().set("email", email);
 }
 
 async function getCookies() {
-    const token = cookies().get("token");
-    const email = cookies().get("email");
+  const token = cookies().get("token");
+  const email = cookies().get("email");
 
-    return { token, email };
+  return { token, email };
 }
 
 async function removeCookies() {
-    cookies().delete("token");
-    cookies().delete("email");
+  cookies().delete("token");
+  cookies().delete("email");
 }
 
-export { createCookies, getCookies , removeCookies};
+export { createCookies, getCookies, removeCookies };
