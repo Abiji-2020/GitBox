@@ -27,12 +27,7 @@ export default function Home() {
     checkCookies();
   }, [router]);
 
-  const logout = async () => {
-    await removeCookies();
-    const cookies = await getCookies();
-    console.log("After logout, cookies:", cookies);
-    router.push("/login"); // Redirect to login after logging out
-  };
+  
 
   if (isLoading) {
     return <Loading />;

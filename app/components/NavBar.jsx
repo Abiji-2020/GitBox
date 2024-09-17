@@ -1,5 +1,5 @@
 import style from "./styles/NavBar.module.css";
-import { VscAccount } from "react-icons/vsc";
+import AvatarMenu from "./AvatarMenu";
 const NavBar = () => {
   return (
     <nav className={style.background}>
@@ -8,7 +8,7 @@ const NavBar = () => {
       </div>
       <div className={style.iconContainer}>
         <div className={style.icon}>
-          <VscAccount />
+          <AvatarMenu/>
         </div>
       </div>
     </nav>
