@@ -1,0 +1,43 @@
+.background{
+    background-color: #f0f0f0;
+    color: #b8b6b6;
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    padding: -1rem;
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 10vh;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    
+    padding: 0 2rem;
+    
+}
+.logo{
+    
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 1rem;
+    font-family: 'Brush Script MT', cursive;
+    color: black;
+}
+
+.iconContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: right;
+    width: 10rem;
+    padding-left: 83vw;
+}
+.icon{
+    font-size: 1.5rem;
+    color: black;
+    cursor: pointer;
+    size: 2rem;
+}

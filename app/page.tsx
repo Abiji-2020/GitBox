@@ -5,6 +5,7 @@ import styles from "./style.module.css";
 import { getCookies, removeCookies } from "./cookies/storeCookies";
 import { useRouter } from "next/navigation";
 import Loading from "./components/Loading";
+import NavBar from "./components/NavBar";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +15,7 @@ export default function Home() {
     const checkCookies = async () => {
       const cookies = await getCookies();
       console.log("Cookies:", cookies);
-      if (!cookies?.email) {
+      if (cookies?.email) { //Modified to develping the main page
         router.push("/login");
       } else {
         setIsLoading(false); // Cookies are valid, hide loading screen
@@ -36,10 +37,12 @@ export default function Home() {
   }
 
   return (
-    <div>
+    
+    <>
+      <NavBar />
       <h1 className={styles.title}>Welcome to the Home Page</h1>
       <h2 className={styles.title}>You are logged in</h2>
       <button onClick={logout}>Logout</button>
-    </div>
+    </>
   );
 }

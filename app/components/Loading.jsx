@@ -1,20 +1,12 @@
 // components/Loading.js
+import styles from './styles/Loading.module.css';
+
 const Loading = () => {
-    return (
-      <div className="loading-screen">
-        <p>Loading...</p>
-        <style jsx>{`
-          .loading-screen {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #fff;
-          }
-        `}</style>
-      </div>
-    );
-  };
-  
-  export default Loading;
-  
+  return (
+    <div className={styles.loadingScreen}>
+      <p className={styles.loadingText}>Loading...</p>
+    </div>
+  );
+};
+
+export default Loading;
