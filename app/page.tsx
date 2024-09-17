@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import styles from "./style.module.css";
-import { getCookies, removeCookies } from "./cookies/storeCookies";
+import { getCookies } from "./cookies/storeCookies";
 import { useRouter } from "next/navigation";
 import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
@@ -16,7 +16,7 @@ export default function Home() {
     const checkCookies = async () => {
       const cookies = await getCookies();
       console.log("Cookies:", cookies);
-      if (cookies?.email) {
+      if (!cookies?.email) {
         //Modified to develping the main page
         router.push("/login");
       } else {
@@ -26,8 +26,6 @@ export default function Home() {
 
     checkCookies();
   }, [router]);
-
-  
 
   if (isLoading) {
     return <Loading />;

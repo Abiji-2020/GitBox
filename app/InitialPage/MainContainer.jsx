@@ -1,7 +1,27 @@
 import styles from "./styles/MainContainer.module.css";
 import OutlineCard from "./OutlineCard";
-import project from "../resources/project";
+import React, { useState, useEffect } from "react";
+import { getProjects } from "../resources/project";
+import { getCookies } from "../cookies/storeCookies";
+
+
+
+
 const MainContainer = () => {
+
+  const [project, setProject] = useState([]);
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const cookie = await getCookies();
+      console.log(cookie);
+      const username = cookie.username.value;
+      const data = await getProjects(username);
+      setProject(data);
+  }
+    fetchProjects() 
+  }, []);
+
+
   return (
     <>
       <div className={styles.container}>

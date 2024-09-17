@@ -1,38 +1,26 @@
-import axios from "axios";
 
-
-let project = [
-  {
-    name: "My Project",
-    version: "1.0.0",
-    description: "My project description",
-    link: "/my-project",
-  },
-  {
-    name: "My Second Project",
-    version: "1.0.0",
-    description: "My second project description",
-    link: "/my-second-project",
-  },
-];
+import axios from 'axios';
 
 const getProjects = async (Username: string) => {
-  const response = await axios({
-    url: `http://localhost:8080/projects/${Username}`,
-    method: "get",
-  }).catch((err) => {
+  try {
+    const response = await axios({
+      url: `http://localhost:8080/projects/${Username}`,
+      method: "get",
+    });
+
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      return [];
+    }
+  } catch (err:any) {
     if (err.response.status === 404) {
       console.log("Project does not exist");
-      project = [];
-      return err;
+      return [];
+    } else {
+      throw err;
     }
-  })
-  if (response === undefined) project = [];
-  if (response.status === 200)
-  project = await response.data;
-  if (project === undefined) project = [];
-  return;
-}
+  }
+};
 
 export { getProjects };
-export default project;

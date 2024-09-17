@@ -52,7 +52,6 @@ export default function Login() {
         email: data.email,
         username: data.username
       };
-      await getProjects(data.username);
       createCookies(value);
       router.push("/");
 

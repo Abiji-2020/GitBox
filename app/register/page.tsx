@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import styles from "./register.module.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { getProjects } from "../resources/project";
+import { createCookies } from "../cookies/storeCookies";
 
 export default function Register() {
   const [email, setEmail] = useState();
@@ -22,7 +24,14 @@ export default function Register() {
       alert("Invalid email or password");
     }
     if (response.status === 201) {
-      
+      const data = await response.json();
+      const value = {
+        token: data.token,
+        email: data.email,
+        username: data.username,
+      };
+      console.log(data);
+      createCookies(value);
       router.push("/");
     }
   };
