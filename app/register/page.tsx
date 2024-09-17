@@ -22,6 +22,7 @@ export default function Register() {
       alert("Invalid email or password");
     }
     if (response.status === 201) {
+      
       router.push("/");
     }
   };

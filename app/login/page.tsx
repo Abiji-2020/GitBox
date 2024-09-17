@@ -5,7 +5,7 @@ import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { createCookies } from "../cookies/storeCookies";
-
+import { getProjects } from "../resources/project";
 export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -50,9 +50,12 @@ export default function Login() {
       const value = {
         token: data.token,
         email: data.email,
+        username: data.username
       };
+      await getProjects(data.username);
       createCookies(value);
       router.push("/");
+
     }
   };
 

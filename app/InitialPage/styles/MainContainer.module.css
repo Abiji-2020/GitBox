@@ -1,28 +1,28 @@
-.container{
-    border-top: 2px solid black;
-    display: flex;
-    padding: 2rem;
-    flex-direction: column;
+.container {
+  display: flex;
+  padding: 2rem;
+  flex-direction: column;
 }
 
-.HeadingContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: justify;
-    align-items: center;
-    padding: 1rem;
-    width: 80%;
+.HeadingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: justify;
+  align-items: center;
+  padding: 1rem;
+  width: 80%;
 }
 
-
-.bodyContainer{
-    display: flex;
-      flex-wrap: wrap;        /* Allows items to wrap onto the next row */
-      gap: 35px;              /* Proper gap between items without overflow */
-      background-color: lightgray;
-      padding: 40px;
-        border-radius: 25px;
-        margin-left: 40px;
-        width: 85%;
-
+.bodyContainer {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap; /* Allows items to wrap onto the next row */
+  gap: 35px; /* Proper gap between items without overflow */
+  background-color: lightgray;
+  padding: 40px;
+  border-radius: 25px;
+  margin-left: 40px;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
 }

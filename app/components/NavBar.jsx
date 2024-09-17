@@ -1,3 +1,4 @@
+"use client";
 import style from "./styles/NavBar.module.css";
 import AvatarMenu from "./AvatarMenu";
 const NavBar = () => {
@@ -8,7 +9,7 @@ const NavBar = () => {
       </div>
       <div className={style.iconContainer}>
         <div className={style.icon}>
-          <AvatarMenu/>
+          <AvatarMenu />
         </div>
       </div>
     </nav>
