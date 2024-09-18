@@ -3,6 +3,7 @@ import OutlineCard from "./OutlineCard";
 import React, { useState, useEffect } from "react";
 import { getProjects } from "../resources/project";
 import { getCookies } from "../cookies/storeCookies";
+import NewProjectButton from "./components/NewProjectButton";
 
 
 
@@ -29,8 +30,12 @@ const MainContainer = () => {
           <h2 className={styles.heading}>PROJECTS</h2>
         </div>
       </div>
+      <div className={styles.CreateNewButton}>
+      <NewProjectButton />
+      </div>
       <div className={styles.bodyContainer}>
         {project.length === 0 ? (
+         
           <div>No projects are currently available.</div>
         ) : (
           project.map((projectItem, index) => (

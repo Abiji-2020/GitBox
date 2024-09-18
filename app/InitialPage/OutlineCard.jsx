@@ -16,10 +16,10 @@ export default function OutlineCard({ project }) {
         </div>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {project.name}
+            {project.projectName}
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            {project.description}
+            {project.projectDescription}
           </Typography>
         </CardContent>
       </CardActionArea>

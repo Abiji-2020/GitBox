@@ -32,6 +32,20 @@ export default function Register() {
       };
       console.log(data);
       createCookies(value);
+
+      const createProject = await fetch(
+
+        "http://localhost:8080/projects/create",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username: data.username }),
+        }
+      );
+      const projectData = await createProject.json();
+      console.log(projectData);
       router.push("/");
     }
   };
