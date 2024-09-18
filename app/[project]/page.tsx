@@ -1,4 +1,5 @@
 import React from "react";
+import RepoTable from "./components/RepoTable";
 
 export default async function Page({ params }: { params: any }) {
   const { project } = params;
@@ -12,9 +13,7 @@ export default async function Page({ params }: { params: any }) {
 
   return (
     <div>
-      <h1>{data.title}</h1>
-      <p>{data.body}</p>
-      {}
+      <RepoTable/>
     </div>
   );
 }
